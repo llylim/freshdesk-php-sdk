@@ -7,9 +7,6 @@
  */
 
 namespace Freshdesk\Resources;
-use Freshdesk\Resources\Traits\AllTrait;
-use Freshdesk\Resources\Traits\CreateTrait;
-use Freshdesk\Resources\Traits\ViewTrait;
 
 /**
  * Email Config resource
@@ -20,9 +17,6 @@ use Freshdesk\Resources\Traits\ViewTrait;
  */
 class OutboundMessage extends AbstractResource
 {
-
-    use ViewTrait;
-
     /**
      * The resource endpoint
      *
@@ -31,8 +25,13 @@ class OutboundMessage extends AbstractResource
      */
     protected $endpoint = '/outbound_messages';
 
+    public function view($id)
+    {
+        return $this->api()->request('GET', $this->endpoint, null, ['request_id' => $id]);
+    }
+
     public function create(array $data)
     {
-        return $this->api()->request('POST', '/outbound_messages/whatsapp', $data);
+        return $this->api()->request('POST',  $this->endpoint . '/whatsapp', $data);
     }
 }

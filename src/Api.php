@@ -172,7 +172,7 @@ class Api
      * @api
      * @var OutboundMessage
      */
-    public $outboundMessage;
+    public $outboundMessages;
 
     /**
      * @internal
@@ -318,6 +318,6 @@ class Api
         $this->businessHours = new BusinessHour($this);
 
         //Outbound
-        $this->outboundMessage = new OutboundMessage($this);
+        $this->outboundMessages = new OutboundMessage($this);
     }
 }
