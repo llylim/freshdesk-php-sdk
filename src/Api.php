@@ -24,6 +24,7 @@ use Freshdesk\Resources\Conversation;
 use Freshdesk\Resources\EmailConfig;
 use Freshdesk\Resources\Forum;
 use Freshdesk\Resources\Group;
+use Freshdesk\Resources\OutboundMessage;
 use Freshdesk\Resources\Product;
 use Freshdesk\Resources\SLAPolicy;
 use Freshdesk\Resources\Ticket;
@@ -164,6 +165,14 @@ class Api
      * @var SLAPolicy
      */
     public $slaPolicies;
+
+    /**
+     * Outbound Message resources
+     *
+     * @api
+     * @var OutboundMessage
+     */
+    public $outboundMessage;
 
     /**
      * @internal
@@ -307,5 +316,8 @@ class Api
         $this->emailConfigs = new EmailConfig($this);
         $this->slaPolicies = new SLAPolicy($this);
         $this->businessHours = new BusinessHour($this);
+
+        //Outbound
+        $this->outboundMessage = new OutboundMessage($this);
     }
 }
